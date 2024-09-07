@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# NPM package lock files (optional, but can be ignored if you don’t want to track changes)
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+
+# IDE or editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Temporary files
+*.tmp
+*.swp
+
+# Coverage directory for testing
+coverage/
+
+# Miscellaneous
+*.tgz
+*.zip
