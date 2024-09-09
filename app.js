@@ -15,5 +15,5 @@ app.use(errorHandler)
 
 
 app.listen(PORT, () => {
-    console.log('localhost:3000')
+    console.log(`localhost: ${process.env.PORT}`)
 })
