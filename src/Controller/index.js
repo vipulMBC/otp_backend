@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const contact = require("../model/mongooseShema");
 const Twilio = require("twilio");
-const APP_Constant = require('../constant/Constant')
+const { APP_Constant } = require("../constant/Constant");
 //get contact details
 // @api get /api/contact
 const getContactdetail = asyncHandler(async (req, res) => {
@@ -11,12 +11,9 @@ const getContactdetail = asyncHandler(async (req, res) => {
 //create contact details
 // @api post /api/contact
 
-
-
 const sendSms = asyncHandler(async (req, res) => {});
 
 const createContactdetail = asyncHandler(async (req, res) => {
-
   // console.log("APP_Constant", APP_Constant.TWILIO_ACCOUNT)
   const { name, email, number } = req.body;
   if (!name || !email || !number) {
@@ -29,12 +26,15 @@ const createContactdetail = asyncHandler(async (req, res) => {
 
   let otp = Math.floor(Math.random() * 90000) + 10000;
 
-  const client = Twilio(APP_Constant.TWILIO_ACCOUNT, APP_Constant.TWILIO_AUTH_TOKEN);
+  const client = Twilio(
+    APP_Constant.TWILIO_ACCOUNT,
+    APP_Constant.TWILIO_AUTH_TOKEN
+  );
 
   const textContent = {
     body: `your otp is ${otp}`,
     to: `+91-${number}`,
-    from:  APP_Constant.TWILIO_FROM_NUMBER,
+    from: APP_Constant.TWILIO_FROM_NUMBER,
   };
 
   let contactData;
@@ -47,7 +47,7 @@ const createContactdetail = asyncHandler(async (req, res) => {
     await client.messages.create(textContent).then((message) => {
       res.status(201).json(contactData);
     });
-   }else{
+  } else {
     contactData = await contact.create({
       name,
       email,
@@ -58,9 +58,7 @@ const createContactdetail = asyncHandler(async (req, res) => {
     await client.messages.create(textContent).then((message) => {
       res.status(201).json(contactData);
     });
-   }
-
- 
+  }
 });
 
 const verifyOtp = asyncHandler(async (req, res) => {
@@ -88,18 +86,16 @@ const verifyOtp = asyncHandler(async (req, res) => {
   }
 });
 
-
 const getUserContactdetail = asyncHandler(async (req, res) => {
   let user = {};
-  let isVerified = true
+  let isVerified = true;
   user = await contact.findOne(isVerified);
 
-  if(!!user){
+  if (!!user) {
     res.status(200).json([user]);
-    }else{
-      res.status(404).json({ message: "User Not Found" });
-
-    }
+  } else {
+    res.status(404).json({ message: "User Not Found" });
+  }
 });
 
 module.exports = {
@@ -107,5 +103,5 @@ module.exports = {
   createContactdetail,
   verifyOtp,
   sendSms,
-  getUserContactdetail
+  getUserContactdetail,
 };
