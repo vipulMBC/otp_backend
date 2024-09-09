@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const { APP_Constant, DB_NAME } = require("../constant/Constant");
-console.log('DB_NAME: ', DB_NAME);
 
 const MONGODB_URL = APP_Constant.MONGODB_URL;
-console.log("mongoDbUrl: ", MONGODB_URL);
 
 const connectDB = async () => {
   try {

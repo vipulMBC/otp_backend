@@ -1,11 +1,11 @@
 const dotenv = require('dotenv').config();
 
 const APP_Constant = {
-     TWILIO_ACCOUNT :  process.env.TWILIO_ACCOUNT_SID || 'asdfgh',
-     TWILIO_AUTH_TOKEN : process.env.TWILIO_AUTH_TOKEN || 'wertyui',
-     TWILIO_FROM_NUMBER : process.env.TWILIO_FROM_NUMBER || '234567erty',
      PORT: process.env.PORT,
-     MONGODB_URL: process.env.MONGODB_URL
+     MONGODB_URL: process.env.MONGODB_URL,
+     TWILIO_ACCOUNT :  process.env.TWILIO_ACCOUNT_SID,
+     TWILIO_AUTH_TOKEN : process.env.TWILIO_AUTH_TOKEN,
+     TWILIO_FROM_NUMBER : process.env.TWILIO_FROM_NUMBER
 }
 
 const DB_NAME = "puneEventRegistration"
