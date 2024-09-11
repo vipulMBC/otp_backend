@@ -4,8 +4,12 @@ const app = express();
 const connectDB = require("./src/mongoose/index");
 const errorHandler = require("./src/middlware/errorHandler");
 const { APP_Constant } = require("./src/constant/Constant");
+var cors = require('cors')
 
 connectDB();
+
+
+app.use(cors())
 
 const PORT = APP_Constant.PORT || 8001;
 
